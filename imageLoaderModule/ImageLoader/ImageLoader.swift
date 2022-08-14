@@ -9,26 +9,41 @@ import Foundation
 import UIKit
 
 final internal class ImageLoader {
-    private init() { }
+    internal typealias DataLoaderBlock = (_ url: URL) -> Result<Data, Error>
+    internal init(with cache: ImageCacheProtocol, dataLoadBlock: @escaping DataLoaderBlock) {
+        self.cache = cache
+        self.dataLoadBlock = dataLoadBlock
+    }
 
-    internal static let shared = ImageLoader()
+    private let cache: ImageCacheProtocol
+    private let dataLoadBlock: DataLoaderBlock
+
+    internal static let shared = ImageLoader(with: ImageCache.shared) { url in
+        do {
+            let data = try Data(contentsOf: url)
+            return .success(data)
+        } catch {
+            return .failure(error)
+        }
+    }
+
     typealias CompletionBlock = (_ result: Result<UIImage, Error>) -> Void
 
     internal func loadImage(url: URL, completion: @escaping CompletionBlock) {
         let urlString = url.absoluteString
         DispatchQueue.global().async {
-            if let cachedData = ImageCache.shared.getFromCache(urlString) {
+            if let cachedData = self.cache.getFromCache(urlString) {
                 self.make(from: cachedData, errorForFail: .badCache, completion: completion)
                 return
             }
 
-            do {
-                let data = try Data(contentsOf: url)
-                ImageCache.shared.saveToCache(urlString, data: data)
-                self.make(from: data, errorForFail: .badUrlData, completion: completion)
-            } catch {
-                completion(.failure(error))
-                return
+            let result = self.dataLoadBlock(url)
+            switch result {
+                case let .failure(error):
+                    completion(.failure(error))
+                case let .success(data):
+                    self.cache.saveToCache(urlString, data: data)
+                    self.make(from: data, errorForFail: .badUrlData, completion: completion)
             }
         }
     }

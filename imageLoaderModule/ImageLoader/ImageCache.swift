@@ -7,13 +7,20 @@
 
 import Foundation
 
+internal protocol ImageCacheProtocol {
+    func getFromCache(_ key: String) -> Data?
+    func saveToCache(_ key: String, data: Data)
+}
+
 final internal class ImageCache {
-    private init() { }
+    internal init() { }
     internal static let shared = ImageCache()
 
     private var memoryCache = [String: Data]()
     private static let cacheQueue = DispatchQueue(label: "cacheQueue")
+}
 
+extension ImageCache: ImageCacheProtocol {
     internal func getFromCache(_ key: String) -> Data? {
         ImageCache.cacheQueue.sync {
             return memoryCache[key]
