@@ -15,6 +15,10 @@
 		EFA90CA928A945B7009CF71B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA90CA728A945B7009CF71B /* LaunchScreen.storyboard */; };
 		EFA90CB428A945B7009CF71B /* imageLoaderModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CB328A945B7009CF71B /* imageLoaderModuleTests.swift */; };
 		EFA90CBF28A945B7009CF71B /* imageLoaderModuleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CBE28A945B7009CF71B /* imageLoaderModuleUITests.swift */; };
+		EFA90CD128A94703009CF71B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CCD28A94703009CF71B /* ImageCache.swift */; };
+		EFA90CD228A94703009CF71B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CCE28A94703009CF71B /* ImageLoader.swift */; };
+		EFA90CD328A94703009CF71B /* ImgLoaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CCF28A94703009CF71B /* ImgLoaderError.swift */; };
+		EFA90CD428A94703009CF71B /* ImgLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CD028A94703009CF71B /* ImgLoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		EFA90CBA28A945B7009CF71B /* imageLoaderModuleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = imageLoaderModuleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA90CBE28A945B7009CF71B /* imageLoaderModuleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageLoaderModuleUITests.swift; sourceTree = "<group>"; };
 		EFA90CC028A945B7009CF71B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFA90CCD28A94703009CF71B /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		EFA90CCE28A94703009CF71B /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		EFA90CCF28A94703009CF71B /* ImgLoaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgLoaderError.swift; sourceTree = "<group>"; };
+		EFA90CD028A94703009CF71B /* ImgLoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgLoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		EFA90C9B28A945B5009CF71B /* imageLoaderModule */ = {
 			isa = PBXGroup;
 			children = (
+				EFA90CCC28A94703009CF71B /* ImageLoader */,
 				EFA90C9C28A945B5009CF71B /* AppDelegate.swift */,
 				EFA90C9E28A945B5009CF71B /* SceneDelegate.swift */,
 				EFA90CA028A945B5009CF71B /* ViewController.swift */,
@@ -126,6 +135,17 @@
 				EFA90CC028A945B7009CF71B /* Info.plist */,
 			);
 			path = imageLoaderModuleUITests;
+			sourceTree = "<group>";
+		};
+		EFA90CCC28A94703009CF71B /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90CCD28A94703009CF71B /* ImageCache.swift */,
+				EFA90CCE28A94703009CF71B /* ImageLoader.swift */,
+				EFA90CCF28A94703009CF71B /* ImgLoaderError.swift */,
+				EFA90CD028A94703009CF71B /* ImgLoaderView.swift */,
+			);
+			path = ImageLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +280,11 @@
 			files = (
 				EFA90CA128A945B5009CF71B /* ViewController.swift in Sources */,
 				EFA90C9D28A945B5009CF71B /* AppDelegate.swift in Sources */,
+				EFA90CD228A94703009CF71B /* ImageLoader.swift in Sources */,
+				EFA90CD328A94703009CF71B /* ImgLoaderError.swift in Sources */,
+				EFA90CD128A94703009CF71B /* ImageCache.swift in Sources */,
 				EFA90C9F28A945B5009CF71B /* SceneDelegate.swift in Sources */,
+				EFA90CD428A94703009CF71B /* ImgLoaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
